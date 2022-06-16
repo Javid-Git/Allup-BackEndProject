@@ -42,11 +42,12 @@ $(document).ready(function () {
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                $('.mini-cart').html(data)
+                $('.header-cart').html(data)
             })
     })
 
-    $('.deletefrombasket').click(function (e) {
+
+    $(document).on('click', '.deletefrombasket', function (e) {
         e.preventDefault();
         let url = $(this).attr('href');
         console.log('aaaaaaaaa');
@@ -54,7 +55,7 @@ $(document).ready(function () {
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                $('.mini-cart').html(data)
+                $('.header-cart').html(data)
             })
     })
 })

@@ -44,13 +44,12 @@
                 <div class="product-prices">
                     @if (Model.DicountedPrice > 0)
                     {
-                        <span class="sale-price"> €@Model.Price</span>
                         <span class="regular-price">€@Model.DicountedPrice</span>
+                        <span class="sale-price">€@Model.Price</span>
                     }
                     else
                     {
-                        <span class="regular-price">€@Model.DicountedPrice</span>
-
+                        <span class="regular-price">€@Model.Price</span>
                     }
 
                     <span class="save">Save 12%</span>
