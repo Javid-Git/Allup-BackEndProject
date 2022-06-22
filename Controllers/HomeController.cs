@@ -1,5 +1,6 @@
 ﻿using AllUp.DAL;
 using AllUp.Models;
+using AllUp.ViewModels.HomeViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,8 +20,16 @@ namespace AllUp.Controllers
         }
         public async Task<IActionResult> Index()
         {
-
-            return View(await _context.Products.ToListAsync());
+            List<Product> products = await _context.Products.ToListAsync();
+            HomeViewModel homeViewModel = new HomeViewModel()
+            {
+                Products = await _context.Products.ToListAsync(),
+                Sliders = await _context.Sliders.ToListAsync(),
+                BestSeller = products.Where(p=>p.IsBestSeller).ToList(),
+                NewArrival = products.Where(p=>p.IsNewArrivel).ToList(),
+                Featured = products.Where(p=>p.IsFeature).ToList()
+            };
+            return View(homeViewModel);
         }
         
     }

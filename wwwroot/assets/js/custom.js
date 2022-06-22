@@ -58,5 +58,21 @@ $(document).ready(function () {
                 $('.header-cart').html(data)
             })
     })
+    let path = window.location.pathname
+    path = path.split('/')
+    console.log(path);
+    let links = $('.header-horizontal-menu .menu-content li')
+
+    console.log(links)
+
+    for (var i = 0; i < links.length; i++) {
+        let hrefpath = links[i].children[0].getAttribute('href').split('/')
+        console.log(hrefpath)
+        if (hrefpath[1].toLowerCase() == path[1].toLowerCase()) {
+            links[i].classList.add('active')
+        } else {
+            links[i].classList.remove('active')
+        }
+    }
 })
 

@@ -19,6 +19,8 @@ namespace AllUp.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
 
 
     }

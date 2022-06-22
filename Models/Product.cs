@@ -37,6 +37,10 @@ namespace AllUp.Models
         public string HoverImage { get; set; }
         [ForeignKey("Brand")]
         public int BrandId { get; set; }
+        public bool IsNewArrivel { get; set; }
+        public bool IsBestSeller { get; set; }
+        public bool IsFeature { get; set; }
+
         public IEnumerable<ProductTag> ProductTags { get; set; }
         public IEnumerable<Photo> Photos { get; set; }
         public Brand Brand { get; set; }

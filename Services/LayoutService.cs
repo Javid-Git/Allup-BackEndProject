@@ -1,4 +1,5 @@
 ﻿using AllUp.DAL;
+using AllUp.Interfaces;
 using AllUp.Models;
 using AllUp.ViewModels.BasketViewModel;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AllUp.Services
 {
-    public class LayoutService
+    public class LayoutService : ILayoutInterface
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly AppDbContext _context;
@@ -51,6 +52,11 @@ namespace AllUp.Services
             return basketVMs;
         }
 
+        public async Task<IDictionary<string, string>> GetSetting()
+        {
+            IDictionary<string, string> settings = await _context.Settings.ToDictionaryAsync(x => x.Key, x => x.Value);
 
+            return settings;
+        }
     }
 }

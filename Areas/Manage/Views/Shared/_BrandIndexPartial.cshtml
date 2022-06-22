@@ -1,0 +1,29 @@
+﻿@model List<Brand>
+@{
+    int no = 1;
+}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Brand brand in Model)
+        {
+            <tr>
+                <td>@no</td>
+                <td>@brand.Name</td>
+                <td>
+                    <a asp-area="manage" asp-controller="brand" asp-action="update" asp-route-id="@brand.Id" class="btn btn-warning">Update</a>
+                    <a asp-area="manage" asp-controller="brand" asp-action="delete" asp-route-id="@brand.Id" class="btn btn-danger deleteBtn">Delete</a>
+
+                </td>
+            </tr>
+
+            no++;
+        }
+    </tbody>
+</table>

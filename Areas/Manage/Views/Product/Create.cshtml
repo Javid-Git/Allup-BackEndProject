@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+        <form method="post" asp-action="ProductCreate" asp-controller="Product" asp-area="manage">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="Name" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+                <label for="surname" class="form-label">SurName</label>
+                <input type="text" name="SurName" class="form-control" id="surname">
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" name="Age" class="form-control" id="age">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="Email" class="form-control" id="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
