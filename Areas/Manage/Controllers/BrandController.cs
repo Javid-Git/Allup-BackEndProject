@@ -17,9 +17,22 @@ namespace AllUp.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? status)
         {
-            return View(await _context.Brands.Where(b=>b.IsDeleted != true).ToListAsync());
+            IQueryable<Brand> brands = _context.Brands.AsQueryable();
+            if (status != null && status > 0 )
+            {
+                if (status == 1)
+                {
+                    brands = _context.Brands.Where(b => b.IsDeleted);
+                }
+                else if (status == 2)
+                {
+                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                }
+            }
+            ViewBag.Status = status;
+            return View(await brands.ToListAsync());
         }
         [HttpGet]
         public IActionResult Create()
@@ -91,7 +104,7 @@ namespace AllUp.Areas.Manage.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? status)
         {
             if (id == null)
             {
@@ -108,8 +121,52 @@ namespace AllUp.Areas.Manage.Controllers
             dbbrand.DeletedAt = DateTime.UtcNow.AddHours(+4);
 
             await _context.SaveChangesAsync();
+            IQueryable<Brand> brands = _context.Brands.AsQueryable();
+            if (status != null && status > 0)
+            {
+                if (status == 1)
+                {
+                    brands = _context.Brands.Where(b => b.IsDeleted);
+                }
+                else if (status == 2)
+                {
+                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                }
+            }
+            ViewBag.Status = status;
+            return PartialView("_BrandIndexPartial", brands.ToListAsync());
+        }
+        public async Task<IActionResult> Restore(int? id, int? status )
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
 
-            return PartialView("_BrandIndexPartial", await _context.Brands.Where(b => b.IsDeleted != true).ToListAsync());
+            Brand dbbrand = await _context.Brands.FirstOrDefaultAsync(b => b.Id == id);
+            if (dbbrand == null)
+            {
+                return NotFound();
+            }
+
+            dbbrand.IsDeleted = false;
+            dbbrand.DeletedAt = DateTime.UtcNow.AddHours(+4);
+
+            await _context.SaveChangesAsync();
+            IQueryable<Brand> brands = _context.Brands.AsQueryable();
+            if (status != null && status > 0)
+            {
+                if (status == 1)
+                {
+                    brands = _context.Brands.Where(b => b.IsDeleted);
+                }
+                else if (status == 2)
+                {
+                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                }
+            }
+            ViewBag.Status = status;
+            return PartialView("_BrandIndexPartial", brands.ToListAsync());
         }
     }
 }

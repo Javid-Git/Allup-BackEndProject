@@ -7,21 +7,32 @@
         <tr>
             <th>No</th>
             <th>Name</th>
+            <th>Status</th>
             <th>Setting</th>
         </tr>
     </thead>
     <tbody>
         @foreach (Brand brand in Model)
         {
-            <tr>
-                <td>@no</td>
-                <td>@brand.Name</td>
-                <td>
-                    <a asp-area="manage" asp-controller="brand" asp-action="update" asp-route-id="@brand.Id" class="btn btn-warning">Update</a>
-                    <a asp-area="manage" asp-controller="brand" asp-action="delete" asp-route-id="@brand.Id" class="btn btn-danger deleteBtn">Delete</a>
+        <tr>
+            <td>@no</td>
+            <td>@brand.Name</td>
+            <td style="color:@(brand.IsDeleted ? "red":"green")">@(brand.IsDeleted ? "Deleted":"Active")</td>
+            <td>
+                <a asp-area="manage" asp-controller="brand" asp-action="update" asp-route-id="@brand.Id" class="btn btn-warning">Update</a>
+                @if (brand.IsDeleted)
+                {
+                    <a asp-area="manage" asp-controller="brand" asp-action="restore" asp-route-id="@brand.Id" asp-route-status="@ViewBag.Status" class="btn btn-info restoreBtn">Restore</a>
 
-                </td>
-            </tr>
+                }
+                else
+                {
+                    <a asp-area="manage" asp-controller="brand" asp-action="delete" asp-route-id="@brand.Id" asp-route-status="@ViewBag.Status" class="btn btn-danger deleteBtn">Delete</a>
+
+                }
+
+            </td>
+        </tr>
 
             no++;
         }
