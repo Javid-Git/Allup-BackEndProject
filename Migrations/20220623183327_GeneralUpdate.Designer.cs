@@ -4,14 +4,16 @@ using AllUp.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AllUp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220623183327_GeneralUpdate")]
+    partial class GeneralUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,50 +53,6 @@ namespace AllUp.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("AllUp.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsUpdated")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("AllUp.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -124,9 +82,6 @@ namespace AllUp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Code")
@@ -178,8 +133,6 @@ namespace AllUp.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -282,13 +235,6 @@ namespace AllUp.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("AllUp.Models.Category", b =>
-                {
-                    b.HasOne("AllUp.Models.Category", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId");
-                });
-
             modelBuilder.Entity("AllUp.Models.Photo", b =>
                 {
                     b.HasOne("AllUp.Models.Product", "Product")
@@ -305,10 +251,6 @@ namespace AllUp.Migrations
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("AllUp.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("AllUp.Models.ProductTag", b =>

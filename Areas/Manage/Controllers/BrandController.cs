@@ -1,5 +1,6 @@
 ﻿using AllUp.DAL;
 using AllUp.Models;
+using AllUp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,22 +18,28 @@ namespace AllUp.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? status)
+        public async Task<IActionResult> Index(int? status, int page=1)
         {
-            IQueryable<Brand> brands = _context.Brands.AsQueryable();
+         
+            IQueryable<Brand> query = _context.Brands.AsQueryable();
             if (status != null && status > 0 )
             {
                 if (status == 1)
                 {
-                    brands = _context.Brands.Where(b => b.IsDeleted);
+                    query = _context.Brands.Where(b => b.IsDeleted);
                 }
                 else if (status == 2)
                 {
-                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                    query = _context.Brands.Where(b => !b.IsDeleted);
                 }
             }
+            int itemcount = int.Parse(_context.Settings.FirstOrDefaultAsync(i => i.Key == "PageItemCount").Result.Value);
+            List<Brand> brands = await query.Skip((page - 1) * itemcount).Take(itemcount).ToListAsync();
+            //ViewBag.PageCount = (int)Math.Ceiling((decimal)query.Count() / itemcount);
             ViewBag.Status = status;
-            return View(await brands.ToListAsync());
+            //ViewBag.Page = page;
+            //ViewBag.ItemCountInPage = itemcount;
+            return View(PageNatedList<Brand>.Create(page, query, itemcount));
         }
         [HttpGet]
         public IActionResult Create()
@@ -50,7 +57,7 @@ namespace AllUp.Areas.Manage.Controllers
 
             if (await _context.Brands.AnyAsync(b => b.Name.ToLower().Trim() == brand.Name.ToLower().Trim() && !b.IsDeleted))
             {
-                ModelState.AddModelError("Name", $"{brand.Name} Alreade Exists");
+                ModelState.AddModelError("Name", $"{brand.Name} Already Exists");
                 return View();
             }
             TempData["success"] = "Added Successfully";
@@ -126,15 +133,15 @@ namespace AllUp.Areas.Manage.Controllers
             {
                 if (status == 1)
                 {
-                    brands = _context.Brands.Where(b => b.IsDeleted);
+                    brands = brands.Where(b => b.IsDeleted);
                 }
                 else if (status == 2)
                 {
-                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                    brands = brands.Where(b => !b.IsDeleted);
                 }
             }
             ViewBag.Status = status;
-            return PartialView("_BrandIndexPartial", brands.ToListAsync());
+            return PartialView("_BrandIndexPartial", await brands.ToListAsync());
         }
         public async Task<IActionResult> Restore(int? id, int? status )
         {
@@ -158,15 +165,15 @@ namespace AllUp.Areas.Manage.Controllers
             {
                 if (status == 1)
                 {
-                    brands = _context.Brands.Where(b => b.IsDeleted);
+                    brands = brands.Where(b => b.IsDeleted);
                 }
                 else if (status == 2)
                 {
-                    brands = _context.Brands.Where(b => !b.IsDeleted);
+                    brands = brands.Where(b => !b.IsDeleted);
                 }
             }
             ViewBag.Status = status;
-            return PartialView("_BrandIndexPartial", brands.ToListAsync());
+            return PartialView("_BrandIndexPartial", await brands.ToListAsync());
         }
     }
 }

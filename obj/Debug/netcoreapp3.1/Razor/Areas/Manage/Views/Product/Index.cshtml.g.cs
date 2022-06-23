@@ -40,8 +40,15 @@ using AllUp.ViewModels.HomeViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\user\source\repos\AllUp\Areas\Manage\Views\_ViewImports.cshtml"
+using AllUp.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e2ab38ae5721571c4f07d511e0e38bbfc3ea95cd", @"/Areas/Manage/Views/Product/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4ee8fa53bf13e4f0e1af8ee686007418b2a08ef", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9cade0e3a58768eaf65746ed0057b647d0e0de9c", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Product_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -82,7 +89,7 @@ using AllUp.ViewModels.HomeViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n\r\n<div class=\"row mb-3 d-flex justify-content-between\">\r\n    <div class=\"col-lg-2\">\r\n        <h1>Products</h1>\r\n    </div>\r\n    <div class=\"col-lg-1\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2ab38ae5721571c4f07d511e0e38bbfc3ea95cd5199", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2ab38ae5721571c4f07d511e0e38bbfc3ea95cd5376", async() => {
                 WriteLiteral("Create");
             }
             );

@@ -37,6 +37,8 @@ namespace AllUp.Models
         public string HoverImage { get; set; }
         [ForeignKey("Brand")]
         public int BrandId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
+        public Category Category { get; set; }
         public bool IsNewArrivel { get; set; }
         public bool IsBestSeller { get; set; }
         public bool IsFeature { get; set; }

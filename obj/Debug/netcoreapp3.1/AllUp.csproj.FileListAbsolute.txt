@@ -172,3 +172,6 @@ C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\View
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Brand\Update.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_BrandIndexPartial.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ValidationPartial.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_CategoryIndexPartial.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Create.cshtml.g.cs

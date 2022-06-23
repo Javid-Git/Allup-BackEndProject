@@ -40,8 +40,15 @@ using AllUp.ViewModels.HomeViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\user\source\repos\AllUp\Areas\Manage\Views\_ViewImports.cshtml"
+using AllUp.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d648490421d1f68e4ea4e0d2ed99c0d46ddd90fb", @"/Areas/Manage/Views/Shared/_ValidationPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4ee8fa53bf13e4f0e1af8ee686007418b2a08ef", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9cade0e3a58768eaf65746ed0057b647d0e0de9c", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Shared__ValidationPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

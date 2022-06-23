@@ -21,6 +21,8 @@ namespace AllUp.DAL
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
 
 
     }

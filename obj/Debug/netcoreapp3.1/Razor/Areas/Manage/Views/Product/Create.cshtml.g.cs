@@ -40,8 +40,15 @@ using AllUp.ViewModels.HomeViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\user\source\repos\AllUp\Areas\Manage\Views\_ViewImports.cshtml"
+using AllUp.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6113310906b428483d8b91713a26613eb0712197", @"/Areas/Manage/Views/Product/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4ee8fa53bf13e4f0e1af8ee686007418b2a08ef", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9cade0e3a58768eaf65746ed0057b647d0e0de9c", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Product_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("method", "post", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -83,7 +90,7 @@ using AllUp.ViewModels.HomeViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<h1>Create</h1>\r\n\r\n<div class=\"row d-flex justify-content-center\">\r\n    <div class=\"col-lg-8\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6113310906b428483d8b91713a26613eb07121975227", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6113310906b428483d8b91713a26613eb07121975404", async() => {
                 WriteLiteral(@"
             <div class=""mb-3"">
                 <label for=""name"" class=""form-label"">Name</label>
