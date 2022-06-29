@@ -1,0 +1,84 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-check">
+                <input asp-for="IsBestSeller" class="form-check-input isbestseller">
+                <label asp-for="IsBestSeller" class="form-check-label"></label>
+            </div>
+            <div class="form-check">
+                <input asp-for="IsFeature" class="form-check-input isfeature">
+                <label asp-for="IsFeature" class="form-check-label"></label>
+            </div>
+            <div class="form-check">
+                <input asp-for="IsNewArrivel" class="form-check-input isnewarrival">
+                <label asp-for="IsNewArrivel" class="form-check-label"></label>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" id="name">
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" id="surname">
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DicountedPrice" class="form-label"></label>
+                <input multiple asp-for="DicountedPrice" class="form-control" id="age">
+                <span class="text-danger" asp-validation-for="DicountedPrice"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ExTax" class="form-label"></label>
+                <input asp-for="ExTax" class="form-control" id="age">
+                <span class="text-danger" asp-validation-for="ExTax"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Count" class="form-label"></label>
+                <input asp-for="Count" class="form-control" id="age">
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" id="age">
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="MainFormImage" class="form-label ">Main Image</label>
+                <input asp-for="MainFormImage" class="form-control ">
+                <span class="text-danger" asp-validation-for="MainFormImage"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="HoverFormImage" class="form-label ">Hover Image</label>
+                <input asp-for="HoverFormImage" class="form-control ">
+                <span class="text-danger" asp-validation-for="HoverFormImage"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DetailFormImages" class="form-label ">Detail Images</label>
+                <input asp-for="DetailFormImages" class="form-control">
+                <span class="text-danger" asp-validation-for="DetailFormImages"></span>
+            </div>
+            <div class="form-group parentfield">
+                <label asp-for="BrandId"></label>
+                <select asp-for="BrandId" class="form-control" asp-items="new SelectList(ViewBag.Brands, nameof(Brand.Id), nameof(Brand.Name))">
+                </select>
+                <span class="text-danger" asp-validation-for="BrandId"></span>
+
+            </div>
+            <div class="form-group parentfield">
+                <label asp-for="CategoryId">Category</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="new SelectList(ViewBag.Categories, nameof(Category.Id), nameof(Category.Name))">
+                </select>
+                <span class="text-danger" asp-validation-for="CategoryId"></span>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

@@ -26,4 +26,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\images\mainimages\" />
+    <Folder Include="wwwroot\assets\images\hoverimages\" />
+    <Folder Include="wwwroot\assets\images\detailimages\" />
+  </ItemGroup>
+
 </Project>

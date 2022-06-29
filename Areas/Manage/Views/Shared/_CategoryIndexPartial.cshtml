@@ -19,7 +19,16 @@
             no++;
         <tr>
             <td>@no</td>
-            <td>@category.Image</td>
+            @if (category.Image != null)
+            {
+                <td><img style=" width:250px; height:150px " src="~/assets/images/@category.Image" alt="Alternate Text" /></td>
+
+            }
+            else
+            {
+                <td></td>
+
+            }
             <td>@category.Name</td>
             <td style="color:@(category.IsDeleted ? "red":"green")">@(category.IsDeleted ? "Deleted":"Active")</td>
             <td style="color:@(category.IsMain ? "blue":"orange")">@(category.IsMain ? "Main":"Sub")</td>

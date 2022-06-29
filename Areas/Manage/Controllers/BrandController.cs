@@ -111,7 +111,7 @@ namespace AllUp.Areas.Manage.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Delete(int? id, int? status)
+        public async Task<IActionResult> Delete(int? id, int? status, int page)
         {
             if (id == null)
             {
@@ -141,9 +141,11 @@ namespace AllUp.Areas.Manage.Controllers
                 }
             }
             ViewBag.Status = status;
-            return PartialView("_BrandIndexPartial", await brands.ToListAsync());
+            int itemcount = int.Parse(_context.Settings.FirstOrDefaultAsync(i => i.Key == "PageItemCount").Result.Value);
+
+            return PartialView("_BrandIndexPartial", PageNatedList<Brand>.Create(page, brands, itemcount));
         }
-        public async Task<IActionResult> Restore(int? id, int? status )
+        public async Task<IActionResult> Restore(int? id, int? status, int page )
         {
             if (id == null)
             {
@@ -172,8 +174,10 @@ namespace AllUp.Areas.Manage.Controllers
                     brands = brands.Where(b => !b.IsDeleted);
                 }
             }
+            int itemcount = int.Parse(_context.Settings.FirstOrDefaultAsync(i => i.Key == "PageItemCount").Result.Value);
+
             ViewBag.Status = status;
-            return PartialView("_BrandIndexPartial", await brands.ToListAsync());
+            return PartialView("_BrandIndexPartial", PageNatedList<Brand>.Create(page, brands, itemcount));
         }
     }
 }

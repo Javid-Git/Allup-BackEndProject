@@ -175,3 +175,6 @@ C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\View
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_CategoryIndexPartial.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Create.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Update.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Update.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ProductIndexPartial.cshtml.g.cs

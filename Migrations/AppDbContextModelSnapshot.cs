@@ -103,8 +103,8 @@ namespace AllUp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(2055)")
+                        .HasMaxLength(2055);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -135,9 +135,18 @@ namespace AllUp.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
+
+                    b.Property<string>("DetailImages")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("DicountedPrice")
                         .HasColumnType("money");
@@ -152,10 +161,16 @@ namespace AllUp.Migrations
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsFeature")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsNewArrivel")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUpdated")
                         .HasColumnType("bit");
 
                     b.Property<string>("MainImnage")
@@ -171,9 +186,11 @@ namespace AllUp.Migrations
                         .HasColumnType("money");
 
                     b.Property<string>("Seria")
-                        .IsRequired()
                         .HasColumnType("nvarchar(4)")
                         .HasMaxLength(4);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

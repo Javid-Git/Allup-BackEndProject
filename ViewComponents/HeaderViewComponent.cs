@@ -36,7 +36,7 @@ namespace AllUp.ViewComponents
 
                     basketVM.Name = product.Name;
                     basketVM.Image = product.MainImnage;
-                    basketVM.Price = product.DicountedPrice>0? product.DicountedPrice:product.Price;
+                    basketVM.Price = product.DicountedPrice > 0 ? product.DicountedPrice : product.Price;
                     basketVM.ExTax = product.ExTax;
                 }
             }

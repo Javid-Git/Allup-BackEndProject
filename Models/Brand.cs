@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,7 @@ namespace AllUp.Models
         public Nullable<DateTime> DeletedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public IEnumerable<Product> Products { get; set; }
+        
 
 
     }

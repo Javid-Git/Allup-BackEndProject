@@ -6,7 +6,7 @@
 
 <div class=" row justify-content-center">
     <div class="col-lg-8">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-check">
                 <input asp-for="IsMain" class="form-check-input ismainbtn">
                 <label asp-for="IsMain" class="form-check-label"></label>
@@ -17,9 +17,9 @@
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
             <div class="mb-3 imgfield">
-                <label asp-for="Image" class="form-label "></label>
-                <input asp-for="Image" class="form-control ">
-                <span class="text-danger" asp-validation-for="Image"></span>
+                <label asp-for="FormFile" class="form-label "></label>
+                <input asp-for="FormFile" class="form-control ">
+                <span class="text-danger" asp-validation-for="FormFile"></span>
             </div>
             <div class="form-group parentfield">
                 <label asp-for="ParentId"></label>

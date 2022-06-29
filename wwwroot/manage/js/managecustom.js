@@ -39,7 +39,18 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(url)
-                    .then(res => res.text())
+                    .then(res => {
+                        if (res.status == 400) {
+                            Swal.fire(
+                                'Not restored',
+                                'Main category is not existing',
+                                'error'
+                            )
+                        } else {
+                            return res.text()
+                        }
+                    })
+                        
                     .then(data => { $('.tblContent').html(data) })
                 Swal.fire(
                     'Restored!',
