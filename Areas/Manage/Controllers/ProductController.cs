@@ -102,13 +102,14 @@ namespace P129Allup.Areas.Manage.Controllers
             Brand brand = await _context.Brands.FirstOrDefaultAsync(b => b.Id == product.BrandId);
             TempData["success"] = "Product was created successfully";
             product.CreatedAt = DateTime.UtcNow.AddHours(+4);
-            product.Name = product.Name.Trim();
-            product.Price = product.Price;
-            product.DicountedPrice = product.DicountedPrice;
             product.Seria = (brand.Name.Substring(0, 2) + product.Name.Substring(0, 2)).ToLower();
             Random random = new Random();
             Random random2 = new Random();
-            product.Code = random.Next(1,1000)+ random2.Next(1, 1000);
+            product.Code = random.Next(1, 1000) + random2.Next(1, 1000);
+
+            product.Name = product.Name.Trim();
+            product.Price = product.Price;
+            product.DicountedPrice = product.DicountedPrice;
             product.Count = product.Count;
             product.Description = product.Description;
             product.ExTax = product.ExTax;
@@ -202,14 +203,17 @@ namespace P129Allup.Areas.Manage.Controllers
                     return View();
                 }
             }
-            dbproduct.Name = product.Name.Trim();
-            dbproduct.Price = product.Price;
-            dbproduct.DicountedPrice = product.DicountedPrice;
             dbproduct.Seria = (brand.Name.Substring(0, 2) + product.Name.Substring(0, 2)).ToLower();
-            dbproduct.Code = product.Id;
-            dbproduct.Count = product.Count;
-            dbproduct.Description = product.Description;
-            product.ExTax = product.ExTax;
+
+            //dbproduct.Name = product.Name.Trim();
+            //dbproduct.Price = product.Price;
+            //dbproduct.DicountedPrice = product.DicountedPrice;
+            //dbproduct.Code = product.Id;
+            //dbproduct.Count = product.Count;
+            //dbproduct.Description = product.Description;
+            //product.ExTax = product.ExTax;
+            //_context.Products.Update(product);
+            _context.Entry(dbproduct).CurrentValues.SetValues(product);
             if (product.MainFormImage != null)
             {
                 FileHelper.DeleteFile(_env, dbproduct.MainImnage, "assets", "images", "mainimages");
@@ -227,7 +231,8 @@ namespace P129Allup.Areas.Manage.Controllers
                 foreach (Photo photo in photos)
                 {
                     FileHelper.DeleteFile(_env, photo.Image, "assets", "images", "detailimages");
-                    
+                    _context.Photos.Remove(photo);
+                    _context.SaveChanges();
 
 
                 }
