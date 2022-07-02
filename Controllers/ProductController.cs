@@ -1,6 +1,7 @@
 ﻿using AllUp.DAL;
 using AllUp.Models;
 using AllUp.ViewModels.BasketViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace AllUp.Controllers
 {
+    [Authorize(Roles ="User")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;

@@ -62,7 +62,7 @@
     </div>
 
     <!--====== PRELOADER PART ENDS ======-->
-   @await Component.InvokeAsync("Header", settings);
+    @await Component.InvokeAsync("Header", settings);
 
     @RenderBody()
     <!--====== Brand Part Start ======-->
@@ -235,6 +235,7 @@
     <!--====== Main Activation js ======-->
     <script src="~/assets/js/main.js"></script>
     <script src="~/assets/js/custom.js" asp-append-version="true"></script>
+    @RenderSection("Script", false)
 
 
 

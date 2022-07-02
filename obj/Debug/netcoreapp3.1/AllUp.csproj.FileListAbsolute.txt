@@ -178,3 +178,12 @@ C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\View
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Update.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Update.cshtml.g.cs
 C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ProductIndexPartial.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\user\source\repos\AllUp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\user\source\repos\AllUp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\user\source\repos\AllUp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\user\source\repos\AllUp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationPartial.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\user\source\repos\AllUp\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Login.cshtml.g.cs

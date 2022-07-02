@@ -3,6 +3,7 @@ using AllUp.Extensions;
 using AllUp.Helpers;
 using AllUp.Models;
 using AllUp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,8 @@ using System.Threading.Tasks;
 namespace AllUp.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
+
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
