@@ -2,6 +2,7 @@
 using AllUp.ViewModels.AccountViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,13 @@ namespace AllUp.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ILogger<AccountController> logger)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         #region Roles
@@ -117,5 +120,69 @@ namespace AllUp.Controllers
             _signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVM)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = await _userManager.FindByEmailAsync(forgotPasswordVM.Email);
+                if (user != null )
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var passwordResetLink = Url.Action("ResetPassword", "Account",
+                    new { email = forgotPasswordVM.Email, token = token }, Request.Scheme);
+                    _logger.Log(LogLevel.Warning, passwordResetLink);
+                    return Redirect(passwordResetLink);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email is incorrect");
+                    return View();
+                }
+            }
+            
+            return View(forgotPasswordVM);
+        }
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (token == null || email == null)
+            {
+                ModelState.AddModelError("", "Invalid reset password token");
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser appUser = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
+                if (appUser != null)
+                {
+                    IdentityResult result = await _userManager.ResetPasswordAsync(appUser, resetPasswordVM.Token, resetPasswordVM.Password);
+                    if (result.Succeeded)
+                    {
+                        return View("ResetPasswordSuccessfully");
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        return View();
+                    }
+                    
+                }
+            }
+            return View();
+        }
+
     }
 }
